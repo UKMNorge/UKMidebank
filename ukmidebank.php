@@ -32,15 +32,11 @@ function UKMide_menu() {
 	switch_to_blog( UKM_HOSTNAME == 'ukm.dev' ? 13 : 881 );
 	
 	# Hent alle sider
-	$my_wp_query = new WP_Query();
-	$all_wp_pages = $my_wp_query->query(array('post_type' => 'page', 'post_status' => 'publish'));
-
-	# Hent idébank hovedside
 	$parent_page = get_page_by_path( 'idebank' );
-	
-	# Hent alle undersider
-	$children_pages = get_page_children( $parent_page->ID, $all_wp_pages );
-	
+	# Hent alle sider
+	$my_wp_query = new WP_Query();
+	$children_pages = $my_wp_query->query( array('post_parent' => $parent_page->ID, 'post_type'=>'page', 'posts_per_page' => 100, 'orderby' => 'menu_order', 'order' => 'ASC') );
+
 	# Legg til menyelementer og enqueue scripts + styles
 	foreach( $children_pages as $child ) {
 		$subpage = add_submenu_page('idebank', $child->post_title, $child->post_title, 'editor', 'UKMide_'.$child->post_name, 'UKMide');
