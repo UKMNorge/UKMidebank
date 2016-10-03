@@ -63,6 +63,9 @@ function UKMide() {
 			$VIEW = 'idebank';
 			break;
 		default:
+			if( isset( $_GET['subpage'] ) ) {
+				$PAGE_SLUG = $PAGE_SLUG .'/'. $_GET['subpage'];
+			}
 			require_once('controller/page.controller.php');
 			$VIEW = 'page';
 			break;
