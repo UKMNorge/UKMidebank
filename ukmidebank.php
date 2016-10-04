@@ -16,12 +16,6 @@ if(is_admin()) {
 
 // Regular menu
 function UKMide_menu() {
-	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	// !!! DEV MODE !!! DEV MODE !!! DEV MODE !!! DEV MODE !!! DEV MODE !!!
-	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	if( !is_super_admin() ) {
-		return;
-	}
 	$page = add_menu_page('Idébank', 'Idébank', 'editor', 'idebank', 'UKMide', 'http://ico.ukm.no/news-16.png',5);
 	add_action( 'admin_print_styles-' . $page, 'UKMide_scripts_and_styles' );	
 	
