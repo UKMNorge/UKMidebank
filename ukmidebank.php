@@ -21,7 +21,7 @@ function UKMide_menu() {
 	
 	// LIST UT ALLE IDÉBANKER
 	global $ID_ARRANGOR;
-	
+
 	# Bytt til arrangor
 	switch_to_blog( UKM_HOSTNAME == 'ukm.dev' ? 13 : 881 );
 	
@@ -31,14 +31,16 @@ function UKMide_menu() {
 	$my_wp_query = new WP_Query();
 	$children_pages = $my_wp_query->query( array('post_parent' => $parent_page->ID, 'post_type'=>'page', 'posts_per_page' => 100, 'orderby' => 'menu_order', 'order' => 'ASC') );
 
+	# Restore til aktiv side
+	### OBS - MÅ GJØRES FØR LOOPEN FOR Å KUNNE LEGGE TIL SIDER (ingen av brukerne har editor på arrangørbloggen!)
+	restore_current_blog();
+
 	# Legg til menyelementer og enqueue scripts + styles
 	foreach( $children_pages as $child ) {
 		$subpage = add_submenu_page('idebank', $child->post_title, $child->post_title, 'editor', 'UKMide_'.$child->post_name, 'UKMide');
 		add_action( 'admin_print_styles-' . $subpage, 'UKMide_scripts_and_styles' );	
 	}
 	
-	# Restore til aktiv side
-	restore_current_blog();
 }
 
 function UKMide_scripts_and_styles(){
