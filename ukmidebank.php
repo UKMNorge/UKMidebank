@@ -16,7 +16,7 @@ if(is_admin()) {
 
 // Regular menu
 function UKMide_menu() {
-	$page = add_menu_page('Idébank', 'Idébank', 'editor', 'idebank', 'UKMide', 'http://ico.ukm.no/news-16.png',5);
+	$page = add_menu_page('Idébank', 'Idébank', 'ukm_idebank', 'idebank', 'UKMide', 'http://ico.ukm.no/news-16.png',5);
 	add_action( 'admin_print_styles-' . $page, 'UKMide_scripts_and_styles' );	
 	
 	// LIST UT ALLE IDÉBANKER
@@ -37,7 +37,7 @@ function UKMide_menu() {
 
 	# Legg til menyelementer og enqueue scripts + styles
 	foreach( $children_pages as $child ) {
-		$subpage = add_submenu_page('idebank', $child->post_title, $child->post_title, 'editor', 'UKMide_'.$child->post_name, 'UKMide');
+		$subpage = add_submenu_page('idebank', $child->post_title, $child->post_title, 'ukm_idebank', 'UKMide_'.$child->post_name, 'UKMide');
 		add_action( 'admin_print_styles-' . $subpage, 'UKMide_scripts_and_styles' );	
 	}
 	
