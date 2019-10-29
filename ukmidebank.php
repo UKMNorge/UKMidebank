@@ -16,7 +16,15 @@ if(is_admin()) {
 
 // Regular menu
 function UKMide_menu() {
-	$page = add_menu_page('Verktøykasse', 'Verktøykasse', 'ukm_idebank', 'idebank', 'UKMide', '//ico.ukm.no/tools-menu.png',4);
+	$page = add_menu_page(
+        'Verktøykasse',
+        'Verktøykasse',
+        'ukm_idebank',
+        'idebank', 
+        'UKMide',
+        'dashicons-welcome-learn-more',
+        4
+    );
 	add_action( 'admin_print_styles-' . $page, 'UKMide_scripts_and_styles' );	
 	
 	// LIST UT ALLE IDÉBANKER
