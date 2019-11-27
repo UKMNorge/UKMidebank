@@ -9,9 +9,7 @@ Author URI: http://www.ukm-norge.no
 */
 
 if(is_admin()) {
-	if( get_option('site_type') != false ) {
-		add_action('admin_menu', 'UKMide_menu');
-	}
+    add_action('user_admin_menu', 'UKMide_menu');
 }
 
 // Regular menu
@@ -23,7 +21,7 @@ function UKMide_menu() {
         'idebank', 
         'UKMide',
         'dashicons-welcome-learn-more',
-        4
+        45
     );
 	add_action( 'admin_print_styles-' . $page, 'UKMide_scripts_and_styles' );	
 	
