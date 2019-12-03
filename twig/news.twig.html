@@ -1,44 +1,33 @@
 <div class="content">
-	{% if pagination_current > 1 %}
-		<p>&nbsp;</p>
-	{% endif %}
-	<div class="row">
-		{% for post in posts %}
-			{% if post.meta.redirect is defined %}
-				{% set link = post.meta.redirect %}
-				{% set target = 'target="_blank"' %}
-			{% else %}
-				{% set link = '?page='~ current_page ~'&pagination='~pagination_current~'&post='~ post.ID %}
-				{% set target = '' %}
-			{% endif %}
-			<div class="col-xs-12 col-md-6 col-lg-4">
-				<div class="news">
-					<a href="{{ link }}" {{ target }}>
-						<div class="grid_post_image" style="background-image: url('{{post.image.url}}');"></div>
-					</a>
-					<a href="{{ link }}" {{ target }}><b>{{post.title|raw}}</b></a><br />
-					<p>{{post.lead|raw}}</p>
-					<a href="{{ link }}" {{ target }}>les mer</a>
-				</div>
-			</div>
-			{% if loop.index is divisibleby(2) %}
-				<div class="clearfix hidden-lg"></div>
-			{% elseif loop.index is divisibleby(3) %}
-				<div class="clearfix visible-lg"></div>
-			{% endif %}
-		{% endfor %}
-	</div>
-	
-	<div class="clearfix"></div>
-	<p>&nbsp;</p>
-	<div class="clearfix"></div>
-	{% if pagination_prev is defined %}
-		<a href="?page={{ current_page }}&pagination={{pagination_prev}}" class="btn btn-primary pull-left">Nyere saker</a>
-	{% endif %}
-	
-	{% if pagination_next is defined %}
-		<a href="?page={{ current_page }}&pagination={{pagination_next}}" class="btn btn-primary pull-right">Eldre saker</a>
-	{% endif %}
-	<div class="clearfix"></div>
+    {% if pagination_current > 1 %}
+    <p>&nbsp;</p>
+    {% endif %}
+    <div class="row">
+        {% for post in posts %} {% if post.meta.redirect is defined %} {% set link = post.meta.redirect %} {% set target = 'target="_blank"' %} {% else %} {% set link = '?page='~ current_page ~'&pagination='~pagination_current~'&post='~ post.ID %} {% set target
+        = '' %} {% endif %}
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="news">
+                <a href="{{ link }}" {{ target }}>
+                    <div class="grid_post_image" style="background-image: url('{{post.image.url}}');"></div>
+                </a>
+                <a href="{{ link }}" {{ target }}><b>{{post.title|raw}}</b></a><br />
+                <p>{{post.lead|raw}}</p>
+                <a href="{{ link }}" {{ target }}>les mer</a>
+            </div>
+        </div>
+        {% if loop.index is divisible by(2) %}
+        <div class="clearfix hidden-lg"></div>
+        {% elseif loop.index is divisible by(3) %}
+        <div class="clearfix visible-lg"></div>
+        {% endif %} {% endfor %}
+    </div>
+
+    <div class="clearfix"></div>
+    <p>&nbsp;</p>
+    <div class="clearfix"></div>
+    {% if pagination_prev is defined %}
+    <a href="?page={{ current_page }}&pagination={{pagination_prev}}" class="btn btn-primary pull-left">Nyere saker</a> {% endif %} {% if pagination_next is defined %}
+    <a href="?page={{ current_page }}&pagination={{pagination_next}}" class="btn btn-primary pull-right">Eldre saker</a> {% endif %}
+    <div class="clearfix"></div>
 </div>
 <div class="clearfix"></div>
