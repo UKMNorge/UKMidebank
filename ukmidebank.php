@@ -17,7 +17,7 @@ function UKMide_menu() {
 	$page = add_menu_page(
         'Verktøykasse',
         'Verktøykasse',
-        'ukm_idebank',
+        'subscriber', //Deffinerer hva slags brukerrettigheter brukeren måtte ha for å vise menyvalg "Verktøykasse"
         'idebank', 
         'UKMide',
         'dashicons-welcome-learn-more',
@@ -43,7 +43,12 @@ function UKMide_menu() {
 
 	# Legg til menyelementer og enqueue scripts + styles
 	foreach( $children_pages as $child ) {
-		$subpage = add_submenu_page('idebank', $child->post_title, $child->post_title, 'ukm_idebank', 'UKMide_'.$child->post_name, 'UKMide');
+		$subpage = add_submenu_page(
+            'idebank', 
+            $child->post_title, $child->post_title, 
+            'subscriber', //Deffinerer hva slags brukerrettigheter brukeren måtte ha for å vise menyvalg "Verktøykasse"
+            'UKMide_'.$child->post_name, 
+            'UKMide');
 		add_action( 'admin_print_styles-' . $subpage, 'UKMide_scripts_and_styles' );	
 	}
 	
