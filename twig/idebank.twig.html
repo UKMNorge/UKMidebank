@@ -1,3 +1,25 @@
-<h1>{{ post.title }}</h1>
+<div class="container-fluid">
+    <h1>Verktøykasse</h1>
+    <div class="row">
 
-{{ post.content|raw }}
+
+        
+        {% for sp in subpages %}
+
+
+        <div class="col-xs-12 col-md-6 col-lg-4 col-xl-3">
+            <a href="?page=UKMide_{{ sp.post_name }}">
+                <div class="optionCard card" style="border-width: 1px !important;" data-group="type" data-value="{{ sp.post_title }}">
+                    <div class="rapport-knapper-ikoner dashicons dashicons-awards"></div>
+                    <div class="cal-xs-10 rapport-knapper-innhold">
+                        <div class="header">{{ sp.post_title }}</div>
+                        <p>Hvor mange kontaktpersoner melder på flere innslag</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+
+        {{ post.content|raw }}
+    </div>
+</div>
