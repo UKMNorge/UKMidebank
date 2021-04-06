@@ -45,7 +45,8 @@ function UKMide_menu() {
 	foreach( $children_pages as $child ) {
 		$subpage = add_submenu_page(
             'idebank', 
-            $child->post_title, $child->post_title, 
+            $child->post_title,
+			$child->post_title, 
             'subscriber', //Deffinerer hva slags brukerrettigheter brukeren måtte ha for å vise menyvalg "Verktøykasse"
             'UKMide_'.$child->post_name, 
             'UKMide');
