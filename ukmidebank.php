@@ -45,7 +45,8 @@ function UKMide_menu() {
     foreach( $children_pages as $child ) {
         $subpage = add_submenu_page(
             'idebank', 
-            $child->post_title, $child->post_title, 
+            $child->post_title,
+			$child->post_title, 
             'subscriber', //Deffinerer hva slags brukerrettigheter brukeren måtte ha for å vise menyvalg "Verktøykasse"
             'UKMide_'.$child->post_name, 
             'UKMide');
@@ -55,9 +56,9 @@ function UKMide_menu() {
 }
 
 function UKMide_scripts_and_styles(){
-    wp_enqueue_script('WPbootstrap3_js');
-    wp_enqueue_style('WPbootstrap3_css');
-    wp_enqueue_style( 'UKMide_css', plugin_dir_url( __FILE__ ) .'ukmidebank.css');
+	wp_enqueue_script('WPbootstrap3_js');
+	wp_enqueue_style('WPbootstrap3_css');
+	wp_enqueue_style( 'UKMide_css', PLUGIN_PATH .'UKMidebank/ukmidebank.css');
 }
 
 function UKMide() {
