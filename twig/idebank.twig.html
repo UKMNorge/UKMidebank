@@ -1,10 +1,13 @@
 <div class="container-fluid">
     <h1>Verktøykasse</h1>
     <div class="row">
-        {{ post.content|raw }}
+        
+        <div class="col-xs-12 col-lg-10">
+            {{ post.content|raw }}
+        </div>
 
         {% for subpage in subpages %}
-            <div class="col-xs-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
                 <a href="?page=UKMide_{{ subpage.post_name }}">
                     <div class="optionCard card" style="border-width: 1px !important;" data-group="type"
                         data-value="{{ subpage.post_title }}">
