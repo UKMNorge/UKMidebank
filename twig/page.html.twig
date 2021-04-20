@@ -1,0 +1,39 @@
+<style>
+	img {
+		max-width: 100%;
+		height: auto;
+	}	
+</style>
+
+<h1>{{ page.title|raw }}</h1>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 col-sm-8 col-md-6" style="background: #fff; border:1px solid #ccc; padding: 20px; margin-bottom: 1em;">
+			{% if post is defined %}
+				<a href="?page={{ current_page }}&pagination={{ pagination_current }}" class="btn btn-primary btn-xs pull-right">Lukk nyhetssaken og vis forsiden</a>
+				<div class="clearfix"></div>
+				<h2>{{post.title|raw}}</h2>
+
+				<p>Publisert: {{post_date|date('d.M')}} av 
+				{% if post.author.user_email %}
+					<a href="mailto:{{post.author.user_email}}">{{post.author.display_name}}</a>
+				{% else %}
+					{{post.author.display_name}}
+				{% endif %}
+				</p>
+				
+				{{post.content|raw}}
+				
+				<div class="clearfix"></div>
+				<a href="?page={{ current_page }}&pagination={{ pagination_current }}" class="btn btn-primary">Lukk nyhetssaken og tilbake til forsiden</a>
+			{% else %}
+				{{ page.content|raw }}
+			{% endif %}
+		</div>
+		{% if not post is defined %}
+			<div class="col-xs-12 col-sm-4 col-md-6" style="">
+				{% embed "news.html.twig" %}{% endembed %}
+			</div>
+		{% endif %}
+	</div>
+</div>
