@@ -90,6 +90,12 @@ function UKMide() {
     $my_wp_query = new WP_Query();
     $subpages = $my_wp_query->query( array('post_parent' => $parent_page->ID, 'post_type'=>'page', 'posts_per_page' => 100, 'orderby' => 'menu_order', 'order' => 'ASC') );
 
+    foreach( $subpages as $subpage ) {
+        $subpage->meta = new stdClass();
+        $subpage->meta->dashicon = $subpage->__get('dashicon');
+        $subpage->meta->description = $subpage->__get('description');
+    }
+    
     # Restore til aktiv side
     ### OBS - MÅ GJØRES FØR LOOPEN FOR Å KUNNE LEGGE TIL SIDER (ingen av brukerne har editor på arrangørbloggen!)
     restore_current_blog();
