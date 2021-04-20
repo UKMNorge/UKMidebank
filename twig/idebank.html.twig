@@ -3,9 +3,8 @@
     <div class="row">
         
         <div class="col-xs-12 col-lg-10">
-            {{ post.content|raw }}
+            {{ page.content|raw }}
         </div>
-
         {% for subpage in subpages %}
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
                 <a href="?page=UKMide_{{ subpage.post_name }}">

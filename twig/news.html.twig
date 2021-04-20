@@ -5,8 +5,8 @@
     <div class="row">
         {% for post in posts %} {% if post.meta.redirect is defined %} {% set link = post.meta.redirect %} {% set target = 'target="_blank"' %} {% else %} {% set link = '?page='~ current_page ~'&pagination='~pagination_current~'&post='~ post.ID %} {% set target
         = '' %} {% endif %}
-        <div class="col-xs-12 col-md-6 col-lg-4">
-            <div class="news">
+        <div class="col-xs-12 col-md-6">
+            <div class="news" style="margin: 0 .25em 1em .25em">
                 <a href="{{ link }}" {{ target }}>
                     <div class="grid_post_image" style="background-image: url('{{post.image.url}}');"></div>
                 </a>
