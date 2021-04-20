@@ -1,6 +1,8 @@
 <div class="container-fluid">
     <h1>Verktøykasse</h1>
     <div class="row">
+        {{ post.content|raw }}
+
         {% for subpage in subpages %}
             <div class="col-xs-12 col-md-6 col-lg-4 col-xl-3">
                 <a href="?page=UKMide_{{ subpage.post_name }}">
@@ -15,7 +17,5 @@
                 </a>
             </div>
         {% endfor %}
-
-        {{ post.content|raw }}
     </div>
 </div>
