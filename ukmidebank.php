@@ -89,7 +89,46 @@ class UKMide extends Modul
 
     public static function renderAdmin()
     {
-        if( $_GET['page'] != static::SLUG ) {
+        if( $_GET['page'] == "UKMide_stimuleringsmidler_hei") {
+            $my_wp_query = new WP_Query();
+            $posts = $my_wp_query->query(array('cat' => 19, 'post_type' => 'post', 'posts_per_page' => 1000000, 'orderby' => 'menu_order', 'order' => 'ASC'));
+            static::setAction('stimuleringsmidler');
+            static::addViewData('current_page', $_GET['page']);
+            static::addViewData('posts', $posts);
+            
+            
+            // $my_wp_query = new WP_Query();
+
+            // $cats = get_categories();
+            // echo '<pre>';
+            // var_dump($cats);
+            // echo '</pre>';
+            // foreach ($cats as $cat) {
+            //     $args = array(
+            //     'post_type' => 'post',
+            //     'tax_query' => array(
+            //         array(
+            //             'taxonomy' => 'category',
+            //             'field'    => 'term_id',
+            //             'terms'    => 19,
+            //             ),
+            //         ),
+            //     );
+            //     $query = new WP_Query($args);
+
+            //     var_dump("----------");
+            //     var_dump($query);
+            //     var_dump("----------");
+
+            //     if($query->have_posts()) {
+            //         echo $cat->cat_name;
+            //         while($query->have_posts()){
+            //             var_dump($query->the_post());
+            //         } 
+            //     }
+            // }
+        }
+        elseif( $_GET['page'] != static::SLUG ) {
             $_GET['PAGE_SLUG'] = str_replace('UKMide_', '', $_GET['page']);
             if (isset($_GET['subpage'])) {
                 $_GET['PAGE_SLUG'] = $_GET['PAGE_SLUG'] . '/' . $_GET['subpage'];
