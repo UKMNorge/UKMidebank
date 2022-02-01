@@ -12,14 +12,10 @@
                 </a>
                 <a href="{{ link }}" {{ target }}><b>{{post.title|raw}}</b></a><br />
                 <p>{{post.lead|raw}}</p>
-                <a href="{{ link }}" {{ target }}>les mer</a>
+                <a href="{{ link }}" {{ target }}>Les mer</a>
             </div>
         </div>
-        {% if loop.index is divisible by(2) %}
-        <div class="clearfix hidden-lg"></div>
-        {% elseif loop.index is divisible by(3) %}
-        <div class="clearfix visible-lg"></div>
-        {% endif %} {% endfor %}
+        {% endfor %}
     </div>
 
     <div class="clearfix"></div>
