@@ -19,6 +19,7 @@ class UKMide extends Modul
     public static function hook()
     {
         add_action('user_admin_menu', [static::class, 'meny']);
+        add_action('admin_init', [static::class, 'registerCloudflareScript']);
     }
 
     public static function meny()
@@ -80,10 +81,15 @@ class UKMide extends Modul
         return $subpages;
     }
 
+    public static function registerCloudflareScript() {
+        // Bruker echo script for å legge til attributter
+        echo "<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"d4e3635a277744b7a073451f00092195\"}'></script>";
+    }
+
     public static function scripts_and_styles()
     {
         wp_enqueue_script('WPbootstrap3_js');
-        wp_enqueue_style('WPbootstrap3_css');
+        wp_enqueue_style('WPbootstrap3_css');        
         wp_enqueue_style('UKMide_css', static::getPluginUrl() . 'ukmidebank.css');
     }
 
