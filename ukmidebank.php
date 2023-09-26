@@ -83,7 +83,10 @@ class UKMide extends Modul
 
     public static function registerCloudflareScript() {
         // Bruker echo script for å legge til attributter
-        echo "<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"d4e3635a277744b7a073451f00092195\"}'></script>";
+        // Gjelder bare idebank
+        if($_GET['page'] == 'idebank') {
+            echo "<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"d4e3635a277744b7a073451f00092195\"}'></script>";
+        }
     }
 
     public static function scripts_and_styles()
