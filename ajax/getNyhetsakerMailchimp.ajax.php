@@ -6,7 +6,7 @@ $handleCall = new HandleAPICall([], [], ['GET', 'POST'], false);
 
 $retArr = [];
 
-$allCampaigns = fetchMailchimp('campaigns?sort_field=send_time&sort_dir=DESC&status=sent&count=30');
+$allCampaigns = fetchMailchimp('campaigns?sort_field=send_time&sort_dir=DESC&status=sent&count=15');
 foreach($allCampaigns->campaigns as $camp) {
     $item['send_time'] = $camp->send_time;
     $item['link'] = $camp->long_archive_url;
