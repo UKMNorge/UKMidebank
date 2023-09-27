@@ -10,7 +10,7 @@ $allCampaigns = fetchMailchimp('campaigns?sort_field=send_time&sort_dir=DESC&sta
 foreach($allCampaigns->campaigns as $camp) {
     $item['send_time'] = $camp->send_time;
     $item['link'] = $camp->long_archive_url;
-    $item['name'] = fetchMailchimp('campaigns/' . $camp->id)->settings->title;
+    $item['name'] = fetchMailchimp('campaigns/' . $camp->id)->settings->preview_text;
     $retArr[] = $item;
 }
 
