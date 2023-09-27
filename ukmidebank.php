@@ -18,6 +18,11 @@ class UKMide extends Modul
 
     public static function hook()
     {
+        add_action(
+            'wp_ajax_UKMidebank_ajax',
+            ['UKMide', 'ajax']
+        );
+
         add_action('user_admin_menu', [static::class, 'meny']);
         add_action('admin_init', [static::class, 'registerCloudflareScript']);
     }
