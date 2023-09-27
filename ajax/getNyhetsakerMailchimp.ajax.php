@@ -12,7 +12,7 @@ foreach($allCampaigns->campaigns as $camp) {
     $item['link'] = $camp->long_archive_url;
     
     $name = fetchMailchimp('campaigns/' . $camp->id)->settings;
-    $item['name'] = $name->preview_text ? $name->preview_text : $name->title;
+    $item['name'] = $name->preview_text != null ? $name->preview_text : $name->title;
     $retArr[] = $item;
 }
 
