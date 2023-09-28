@@ -10,6 +10,9 @@ Author URI: http://www.ukm-norge.no
 
 use UKMNorge\Wordpress\Modul;
 
+// Disable warnings (adding <script> by echo shows warning)
+error_reporting(E_ERROR | E_PARSE);
+
 class UKMide extends Modul
 {
     const SLUG = 'idebank';
